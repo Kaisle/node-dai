@@ -15,7 +15,6 @@ Offers 14 different actions for programatically interacting with MakerDAO using 
 ```node
 npm install node-dai --save
 ```
-
 ## Prerequisites
 
 * An open CDP
