@@ -9,13 +9,13 @@ The first comprehensive NPM module for the MakerDAO ecosystem.
 
 Offers 14 different actions for programatically interacting with MakerDAO using Javascript and web3.
 
-### Installation
+## Installation
 
 ```node
 npm install node-dai --save
 ```
 
-### Prerequisites
+## Prerequisites
 
 * An open CDP
 * All token allowances approved
@@ -25,7 +25,7 @@ The first two can be obtained in a few minutes by heading to the MakerDAO dashbo
 
 MKR can be bought at OasisDEX: https://oasisdex.com/trade/MKR/DAI
 
-### Examples
+## Examples
 
 #### Deposit 1 ETH to CDP and draw 300 DAI:
 
@@ -141,7 +141,7 @@ var PETH = 1;
 
 ```
 
-### Supported actions
+## Actions
 
 * ETHToDAI (ETH, options)
 * DAIToETH (DAI, options)
@@ -159,21 +159,21 @@ var PETH = 1;
 * PETHToDAI (PETH, options)
 
 
-### Options
+## Options
 
 ```node
     privateKey: Your private key, used for signing transactions. All transactions are signed locally.
-    cdpId: The numeric ID of one of your open CDP's. Example: 401
+    cdpId: The numeric ID of one of your open CDP's (e.g. 401)
     web3: Your web3 instance.
-    networkId: The ID of the desired network. 1 for Main Network, 42 for Kovan Test Network. Default: 42
+    networkId: The ID of the desired network. 1 for Main Network, 42 for Kovan Test Network. Defaults to 42
     DAIToDraw: Amount of DAI to draw from your CDP. Only relevant for method: ETHToDAI
-    verbose: Whether to print to console or not. Default: true
-    waitInterval: Amount of ms to wait inbetween transactions. Default: 10000
-    gasLimit: Gas Limit for every transaction. Default: 300000
-    requireConfirm: Require that every transaction receives 12 block confirmations before proceeding to next. Default: false
+    verbose: Whether to print to console or not. Defaults to true
+    waitInterval: Amount of ms to wait inbetween transactions. Defaults to 10000
+    gasLimit: Gas Limit for every transaction. Defaults to 300000
+    requireConfirm: Require that every transaction receives 12 block confirmations before proceeding to next. Defaults to false
 ```
 
-### Supported networks
+## Networks
 
 * Main Network (network ID 1)
 * Kovan Test Network (network ID 42)
@@ -182,7 +182,7 @@ It is recommended to test the module on Kovan first, before using it with the Ma
 
 More test networks will be added soon.
 
-### Public test account
+## Public test account
 
 If you prefer not to use your own account, you may instead use the Ganache mock account with
 
@@ -193,7 +193,7 @@ This account is public, has an open CDP, some MKR and Kovan-ETH in its wallet an
 
 DO NOT SEND REAL FUNDS TO THIS ACCOUNT. USE FOR TESTING ONLY.
 
-### Troubleshooting
+## Troubleshooting
 
 * Ensure that you have enough MKR to pay the small fee necessary for interacting with a CDP.
 * Ensure that you have enough ETH to pay for gas.
@@ -206,7 +206,7 @@ DO NOT SEND REAL FUNDS TO THIS ACCOUNT. USE FOR TESTING ONLY.
 
 The MakerDAO dashboard can be accessed here: https://dai.makerdao.com/
 
-### License
+## License
 
 Copyright 2018 Kaisle
 
@@ -216,7 +216,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-### Additional resources
+## Additional resources
 
 For more information about MakerDAO visit: https://makerdao.com/
 
@@ -224,6 +224,6 @@ Access the MakerDAO dashboard at: https://dai.makerdao.com/
 
 Access OasisDEX at: https://oasisdex.com/trade/MKR/DAI
 
-### Contributing
+## Contributing
 
 This module is still in its infancy. Any pull requests are very welcome!
