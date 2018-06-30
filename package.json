@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaisle/node-dai.git"
+  },
   "keywords": [
     "DAI",
     "ETH",
@@ -23,7 +27,10 @@
   ],
   "author": "Kaisle",
   "license": "MIT",
-  "homepage": "https://github.com/Kaisle/node-dai#readme"
+  "bugs": {
+    "url": "https://github.com/Kaisle/node-dai/issues"
+  },
+  "homepage": "https://github.com/Kaisle/node-dai#readme",
   "dependencies": {
     "await-transaction-mined": "^1.0.9",
     "bn.js": "^4.11.8",
