@@ -1,4 +1,4 @@
-# node-cdp
+# node-dai
 
 * Convert ETH to DAI.
 * Convert DAI to ETH.
