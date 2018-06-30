@@ -20,6 +20,7 @@ npm install node-dai --save
 * An open CDP
 * All token allowances approved
 * A little bit of MKR in your wallet (for paying fees)
+* A [web3 instance](https://github.com/ethereum/web3.js/)
 
 The first two can be obtained in a few minutes by heading to the MakerDAO dashboard: https://dai.makerdao.com/
 
