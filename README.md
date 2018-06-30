@@ -4,6 +4,7 @@
 * Convert DAI to ETH.
 * Fund your CDP with PETH.
 * Draw DAI from your CDP.
+* And much more...
 
 The first comprehensive NPM module for the MakerDAO ecosystem.
 
