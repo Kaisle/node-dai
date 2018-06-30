@@ -1,7 +1,7 @@
 # node-dai
 
-* Deposit ETH to CDP and draw DAI.
-* Convert DAI to ETH.
+* Deposit ETH to your CDP and draw DAI.
+* Convert your DAI to ETH.
 * Fund your CDP with PETH.
 * Draw DAI from your CDP.
 * And much more...
@@ -9,6 +9,8 @@
 The first comprehensive NPM module for the MakerDAO ecosystem.
 
 Offers 14 different actions for programatically interacting with MakerDAO using Javascript and web3.
+
+[What is MakerDAO?](https://medium.com/cryptolinks/maker-for-dummies-a-plain-english-explanation-of-the-dai-stablecoin-e4481d79b90)
 
 ## Installation
 
