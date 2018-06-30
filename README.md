@@ -14,7 +14,6 @@ Offers 14 different actions for programatically interacting with MakerDAO using 
 
 ```node
 npm install node-dai --save
-npm install web3@0.20.6 --save
 ```
 
 ## Prerequisites
@@ -22,7 +21,6 @@ npm install web3@0.20.6 --save
 * An open CDP
 * All token allowances approved
 * A little bit of MKR in your wallet (for paying fees)
-* A [web3 instance](https://github.com/ethereum/web3.js/)
 
 The first two can be obtained in a few minutes by heading to the MakerDAO dashboard: https://dai.makerdao.com/
 
@@ -40,9 +38,8 @@ const Web3 = require('web3');
 
 var options = {
   privateKey: 'c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3', // Your private key
-  cdpId: 401, // The ID of your open CDP
+  cdpId: 614, // The ID of your open CDP
   networkId: 42, // Kovan Test Network, use 1 for Main Network
-  web3: new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/<YOUR_INFURA_API_KEY>')),
   DAIToDraw: 300 // Amount of DAI to draw from CDP
 };
 var ETH = 1;
@@ -61,9 +58,8 @@ const Web3 = require('web3');
 
 var options = {
   privateKey: 'c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3', // Your private key
-  cdpId: 401, // The ID of your open CDP
-  networkId: 42, // Kovan Test Network, use 1 for Main Network
-  web3: new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/<YOUR_INFURA_API_KEY>'))
+  cdpId: 614, // The ID of your open CDP
+  networkId: 42 // Kovan Test Network, use 1 for Main Network
 };
 var DAI = 200;
 
@@ -77,13 +73,11 @@ var DAI = 200;
 
 ```node
 const nodeDai = require('node-dai');
-const Web3 = require('web3');
 
 var options = {
   privateKey: 'c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3', // Your private key
-  cdpId: 401, // The ID of your open CDP
-  networkId: 42, // Kovan Test Network, use 1 for Main Network
-  web3: new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/<YOUR_INFURA_API_KEY>'))
+  cdpId: 614, // The ID of your open CDP
+  networkId: 42 // Kovan Test Network, use 1 for Main Network
 };
 var DAI = 200;
 
@@ -101,9 +95,8 @@ const Web3 = require('web3');
 
 var options = {
   privateKey: 'c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3', // Your private key
-  cdpId: 401, // The ID of your open CDP
-  networkId: 42, // Kovan Test Network, use 1 for Main Network
-  web3: new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/<YOUR_INFURA_API_KEY>'))
+  cdpId: 614, // The ID of your open CDP
+  networkId: 42 // Kovan Test Network, use 1 for Main Network
 };
 var DAI = 200;
 
@@ -120,8 +113,7 @@ const nodeDai = require('node-dai');
 
 var options = {
   privateKey: 'c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3', // Your private key
-  networkId: 42, // Kovan Test Network, use 1 for Main Network
-  web3: new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/<YOUR_INFURA_API_KEY>'))
+  networkId: 42 // Kovan Test Network, use 1 for Main Network
 };
 var PETH = 1;
 
@@ -138,9 +130,8 @@ const nodeDai = require('node-dai');
 
 var options = {
   privateKey: 'c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3', // Your private key
-  cdpId: 401, // The ID of your open CDP
-  networkId: 42, // Kovan Test Network, use 1 for Main Network
-  web3: new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/<YOUR_INFURA_API_KEY>'))
+  cdpId: 614, // The ID of your open CDP
+  networkId: 42 // Kovan Test Network, use 1 for Main Network
 };
 var PETH = 1;
 
@@ -172,10 +163,10 @@ var PETH = 1;
 
 ```json
     privateKey: Your private key, used for signing transactions. All transactions are signed locally.
-    cdpId: The numeric ID of one of your open CDPs (e.g. 401)
-    web3: Your web3 instance.
+    cdpId: The numeric ID of one of your open CDPs (e.g. 614)
     networkId: The ID of the desired network. 1 for Main Network, 42 for Kovan Test Network. Default: 42
     DAIToDraw: Amount of DAI to draw from your CDP. Only relevant for method: ETHToDAI
+    web3: An optional web3 instance. Must be version 0.20.6 or lower of web3. Version 1.x.x of web3 is currently not supported.
     verbose: Whether to print to console or not. Default: true
     waitInterval: Amount of ms to wait inbetween transactions. Default:  10000
     gasLimit: Gas Limit for every transaction. Default:  300000

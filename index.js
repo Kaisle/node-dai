@@ -4,6 +4,7 @@ const Tx = require('ethereumjs-tx');
 const fetch = require('node-fetch');
 const awaitMined = require('await-transaction-mined');
 const Wallet = require('ethereumjs-wallet');
+const Web3 = require('web3');
 
 async function getETHPriceInUSD(options) {
     log("Fetching ETH price in USD...", options);
@@ -15,7 +16,7 @@ async function getETHPriceInUSD(options) {
 
 async function waitTillMined(hash, options) {
   log("Submitted transaction: " + hash, options);
-  await awaitMined.awaitTx(options.web3, hash, {ensureNotUncle: options.requireConfirm});
+  await awaitMined.awaitTx(getWeb3(options), hash, {ensureNotUncle: options.requireConfirm});
   log("Mined transaction: " + hash, options);
 }
 
@@ -73,8 +74,8 @@ async function PETHToETH(ETH, options) {
 
 async function ETHToWETH(value, options) {
     log("Converting " + value + " ETH to " + value + " WETH...", options);
-    var networkId = new String(options.networkId) || config.DEFAULT_NETWORK_ID;
-    var WETH = options.web3.eth.contract(config.WETH_ABI[networkId]);
+    var networkId = options.networkId ? new String(options.networkId) : new String(config.DEFAULT_NETWORK_ID);
+    var WETH = getWeb3(options).eth.contract(config.WETH_ABI[networkId]);
     var WETH_instance = WETH.at(config.WETH_address[networkId]);
     var tx = await createTransaction(getAddressFromPrivateKey(options.privateKey),config.WETH_address[networkId],value,options.privateKey,undefined,options);
     var hash = await sendRawTransaction(tx.stx, options);
@@ -83,10 +84,10 @@ async function ETHToWETH(value, options) {
 
 async function WETHToETH(value, options) {
     log("Converting " + value + " WETH to " + value + " ETH...", options);
-    var networkId = new String(options.networkId) || config.DEFAULT_NETWORK_ID;
-    var WETH = options.web3.eth.contract(config.WETH_ABI[networkId]);
+    var networkId = options.networkId ? new String(options.networkId) : new String(config.DEFAULT_NETWORK_ID);
+    var WETH = getWeb3(options).eth.contract(config.WETH_ABI[networkId]);
     var WETH_instance = WETH.at(config.WETH_address[networkId]);
-    var wei = options.web3.toWei(value, config.DEFAULT_VALUE_UNIT);
+    var wei = getWeb3(options).toWei(value, config.DEFAULT_VALUE_UNIT);
     var data = WETH_instance.withdraw.getData(wei);
     var tx = await createTransaction(getAddressFromPrivateKey(options.privateKey),config.WETH_address[networkId],0,options.privateKey, data, options);
     var hash = await sendRawTransaction(tx.stx, options);
@@ -95,10 +96,10 @@ async function WETHToETH(value, options) {
 
 async function WETHToPETH(value, options) {
     log("Converting " + value + " WETH to " + value + " PETH...", options);
-    var networkId = new String(options.networkId) || config.DEFAULT_NETWORK_ID;
-    var PETH = options.web3.eth.contract(config.PETH_ABI[networkId]);
+    var networkId = options.networkId ? new String(options.networkId) : new String(config.DEFAULT_NETWORK_ID);
+    var PETH = getWeb3(options).eth.contract(config.PETH_ABI[networkId]);
     var PETH_instance = PETH.at(config.PETH_address[networkId]);
-    var wei = options.web3.toWei(value, config.DEFAULT_VALUE_UNIT);
+    var wei = getWeb3(options).toWei(value, config.DEFAULT_VALUE_UNIT);
     var data = PETH_instance.join.getData(wei);
     var tx = await createTransaction(getAddressFromPrivateKey(options.privateKey),config.PETH_address[networkId],0,options.privateKey, data, options);
     var hash = await sendRawTransaction(tx.stx, options);
@@ -107,10 +108,10 @@ async function WETHToPETH(value, options) {
 
 async function PETHToWETH(value, options) {
     log("Converting " + value + " PETH to " + value + " WETH...", options);
-    var networkId = new String(options.networkId) || config.DEFAULT_NETWORK_ID;
-    var PETH = options.web3.eth.contract(config.PETH_ABI[networkId]);
+    var networkId = options.networkId ? new String(options.networkId) : new String(config.DEFAULT_NETWORK_ID);
+    var PETH = getWeb3(options).eth.contract(config.PETH_ABI[networkId]);
     var PETH_instance = PETH.at(config.PETH_address[networkId]);
-    var wei = options.web3.toWei(value, config.DEFAULT_VALUE_UNIT);
+    var wei = getWeb3(options).toWei(value, config.DEFAULT_VALUE_UNIT);
     var data = PETH_instance.exit.getData(wei);
     var tx = await createTransaction(getAddressFromPrivateKey(options.privateKey),config.PETH_address[networkId],0,options.privateKey, data, options);
     var hash = await sendRawTransaction(tx.stx, options);
@@ -119,10 +120,10 @@ async function PETHToWETH(value, options) {
 
 async function PETHToCDP(value, options) {
     log("Depositing " + value + " PETH to CDP with ID " + options.cdpId + "...", options);
-    var networkId = new String(options.networkId) || config.DEFAULT_NETWORK_ID;
-    var PETH = options.web3.eth.contract(config.PETH_ABI[networkId]);
+    var networkId = options.networkId ? new String(options.networkId) : new String(config.DEFAULT_NETWORK_ID);
+    var PETH = getWeb3(options).eth.contract(config.PETH_ABI[networkId]);
     var PETH_instance = PETH.at(config.PETH_address[networkId]);
-    var wei = options.web3.toWei(value, config.DEFAULT_VALUE_UNIT);
+    var wei = getWeb3(options).toWei(value, config.DEFAULT_VALUE_UNIT);
     var data = PETH_instance.lock.getData(numStringToBytes32(options.cdpId), wei);
     var tx = await createTransaction(getAddressFromPrivateKey(options.privateKey),config.PETH_address[networkId],0,options.privateKey, data, options);
     var hash = await sendRawTransaction(tx.stx, options);
@@ -131,10 +132,10 @@ async function PETHToCDP(value, options) {
 
 async function CDPToDAI(value, options) {
     log("Drawing " + value + " DAI from CDP with ID " + options.cdpId + "...", options);
-    var networkId = new String(options.networkId) || config.DEFAULT_NETWORK_ID;
-    var PETH = options.web3.eth.contract(config.PETH_ABI[networkId]);
+    var networkId = options.networkId ? new String(options.networkId) : new String(config.DEFAULT_NETWORK_ID);
+    var PETH = getWeb3(options).eth.contract(config.PETH_ABI[networkId]);
     var PETH_instance = PETH.at(config.PETH_address[networkId]);
-    var wei = options.web3.toWei(value, config.DEFAULT_VALUE_UNIT);
+    var wei = getWeb3(options).toWei(value, config.DEFAULT_VALUE_UNIT);
     var data = PETH_instance.draw.getData(numStringToBytes32(options.cdpId), wei);
     var tx = await createTransaction(getAddressFromPrivateKey(options.privateKey),config.PETH_address[networkId],0,options.privateKey, data, options);
     var hash = await sendRawTransaction(tx.stx, options);
@@ -143,10 +144,10 @@ async function CDPToDAI(value, options) {
 
 async function CDPToPETH(value, options) {
     log("Withdrawing " + value + " PETH from CDP with ID " + options.cdpId + "...", options);
-    var networkId = new String(options.networkId) || config.DEFAULT_NETWORK_ID;
-    var PETH = options.web3.eth.contract(config.PETH_ABI[networkId]);
+    var networkId = options.networkId ? new String(options.networkId) : new String(config.DEFAULT_NETWORK_ID);
+    var PETH = getWeb3(options).eth.contract(config.PETH_ABI[networkId]);
     var PETH_instance = PETH.at(config.PETH_address[networkId]);
-    var wei = options.web3.toWei(value, config.DEFAULT_VALUE_UNIT);
+    var wei = getWeb3(options).toWei(value, config.DEFAULT_VALUE_UNIT);
     var data = PETH_instance.free.getData(numStringToBytes32(options.cdpId), wei);
     var tx = await createTransaction(getAddressFromPrivateKey(options.privateKey),config.PETH_address[networkId],0,options.privateKey, data, options);
     var hash = await sendRawTransaction(tx.stx, options);
@@ -155,10 +156,10 @@ async function CDPToPETH(value, options) {
 
 async function DAIToCDP(value, options) {
     log("Funding CDP with ID " + options.cdpId + " with " + value + " DAI...", options);
-    var networkId = new String(options.networkId) || config.DEFAULT_NETWORK_ID;
-    var PETH = options.web3.eth.contract(config.PETH_ABI[networkId]);
+    var networkId = options.networkId ? new String(options.networkId) : new String(config.DEFAULT_NETWORK_ID);
+    var PETH = getWeb3(options).eth.contract(config.PETH_ABI[networkId]);
     var PETH_instance = PETH.at(config.PETH_address[networkId]);
-    var wei = options.web3.toWei(value, config.DEFAULT_VALUE_UNIT);
+    var wei = getWeb3(options).toWei(value, config.DEFAULT_VALUE_UNIT);
     var data = PETH_instance.wipe.getData(numStringToBytes32(options.cdpId), wei);
     var tx = await createTransaction(getAddressFromPrivateKey(options.privateKey),config.PETH_address[networkId],0,options.privateKey, data, options);
     var hash = await sendRawTransaction(tx.stx, options);
@@ -167,17 +168,17 @@ async function DAIToCDP(value, options) {
 
 
 async function sendRawTransaction(stx, options) {
-  const response = await options.web3.eth.sendRawTransaction('0x' + stx.toString('hex'));
+  const response = await getWeb3(options).eth.sendRawTransaction('0x' + stx.toString('hex'));
   return response;
 }
 
 async function createTransaction(source,destination,value,privateKey,data,options) {
-  const transactionCount = await options.web3.eth.getTransactionCount(source, 'pending');
-  const gasPrice = options.gasPrice || options.web3.eth.gasPrice;
-  const gasPriceHex = options.web3.toHex(gasPrice);
-  const gasLimitHex = options.web3.toHex(options.gasLimit || config.DEFAULT_GAS_LIMIT);
-  const value_hex = options.web3.toHex(options.web3.toWei(value, config.DEFAULT_VALUE_UNIT));
-  const nonce = options.web3.toHex(transactionCount);
+  const transactionCount = await getWeb3(options).eth.getTransactionCount(source, 'pending');
+  const gasPrice = options.gasPrice || getWeb3(options).eth.gasPrice;
+  const gasPriceHex = getWeb3(options).toHex(gasPrice);
+  const gasLimitHex = getWeb3(options).toHex(options.gasLimit || config.DEFAULT_GAS_LIMIT);
+  const value_hex = getWeb3(options).toHex(getWeb3(options).toWei(value, config.DEFAULT_VALUE_UNIT));
+  const nonce = getWeb3(options).toHex(transactionCount);
   var key = Buffer.from(privateKey, 'hex');
   var tra = {
       gasPrice: gasPriceHex,
@@ -192,6 +193,14 @@ async function createTransaction(source,destination,value,privateKey,data,option
   tx.sign(key);
   var stx = tx.serialize();
   return {stx: stx, tra: tra};
+}
+
+function getWeb3(options) {
+  return options.web3 || getInfuraWeb3(options);
+}
+
+function getInfuraWeb3(options) {
+  return options.networkId == 1 ? new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/')) : new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/'));
 }
 
 function numStringToBytes32(num) {
