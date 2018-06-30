@@ -139,20 +139,33 @@ var PETH = 1;
 
 ## API
 
-* Deposit ETH and withdraw DAI: nodeDai.ETHToDAI (ETH, options)
-* DAI to ETH: nodeDai.DAIToETH (DAI, options)
-* ETH to WETH: nodeDai.ETHToWETH (ETH, options)
-* WETH to PETH: nodeDai.WETHToPETH (WETH, options)
-* PETH to CDP: nodeDai.PETHToCDP (PETH, options)
-* Draw DAI: nodeDai.CDPToDAI (DAI, options)
-* Repay DAI: nodeDai.DAIToCDP (DAI, options)
-* Withdraw PETH from CDP: nodeDai.CDPToPETH (PETH, options)
-* PETH to WETH: nodeDai.PETHToWETH (PETH, options)
-* WETH to ETH: nodeDai.WETHToETH (WETH, options)
-* CDP to ETH: nodeDai.CDPToETH (ETH, options)
-* PETH to ETH: nodeDai.PETHToETH (PETH, options)
-* WETH to DAI: nodeDai.WETHToDAI (WETH, options)
-* PETH to DAI: nodeDai.PETHToDAI (PETH, options)
+* *Deposit ETH and withdraw DAI:* nodeDai.ETHToDAI (ETH, options)
+
+* *DAI to ETH:* nodeDai.DAIToETH (DAI, options)
+
+* *ETH to WETH:* nodeDai.ETHToWETH (ETH, options)
+
+* *WETH to PETH:* nodeDai.WETHToPETH (WETH, options)
+
+* *PETH to CDP:* nodeDai.PETHToCDP (PETH, options)
+
+* *Draw DAI:* nodeDai.CDPToDAI (DAI, options)
+
+* *Repay DAI:* nodeDai.DAIToCDP (DAI, options)
+
+* *Withdraw PETH from CDP:* nodeDai.CDPToPETH (PETH, options)
+
+* *PETH to WETH:* nodeDai.PETHToWETH (PETH, options)
+
+* *WETH to ETH:* nodeDai.WETHToETH (WETH, options)
+
+* *CDP to ETH:* nodeDai.CDPToETH (ETH, options)
+
+* *PETH to ETH:* nodeDai.PETHToETH (PETH, options)
+
+* *WETH to DAI:* nodeDai.WETHToDAI (WETH, options)
+
+* *PETH to DAI:* nodeDai.PETHToDAI (PETH, options)
 
 
 ## Options
