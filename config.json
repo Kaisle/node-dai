@@ -9,6 +9,7 @@
   },
   "CMC_API_URL" : "https://api.coinmarketcap.com/v1/ticker/ethereum/",
   "DEFAULT_WAIT_BETWEEN_TX_MS": 10000,
+  "DEFAULT_DRAW_FACTOR": 0.60,
   "DEFAULT_GAS_LIMIT": 300000,
   "DEFAULT_NETWORK_ID": 42,
   "DEFAULT_VALUE_UNIT": "ether",

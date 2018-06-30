@@ -1,6 +1,6 @@
 {
   "name": "node-dai",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Convert DAI to ETH and back in one command. Fund and draw from your CDP. 14 different actions related to MakerDAO",
   "main": "index.js",
   "scripts": {
