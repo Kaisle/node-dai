@@ -212,7 +212,7 @@ This account is public, has an open CDP, some MKR and Kovan-ETH in its wallet an
 * Ensure that you have set all permissions in the MakerDAO dashboard (WETH Join, WETH Mock, PETH Exit/Lock, PETH Boom, MKR Wipe/Shut, DAI Wipe/Shut, DAI Bust/Cash) .
 * Ensure that you are on the right network (Kovan is the default network, pass along 1 as networkId to use the Main Network instead).
 * Ensure that your private key is valid.
-* Ensure that your web3 instance is valid and is configured to use the right network. You can use Infura for easy access: https://infura.io/
+* If using a custom web3 instance, ensure that it is valid and is configured to use the right network. You can use Infura for easy access: https://infura.io/
 * Ensure that you are not overleveraging your CDP. You must always leave some collateral (PETH) behind when drawing DAI.
 
 The MakerDAO dashboard can be accessed here: https://dai.makerdao.com/
