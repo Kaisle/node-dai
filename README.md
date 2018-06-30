@@ -19,7 +19,7 @@ npm install node-dai --save
 
 * An open CDP
 * All token allowances approved
-* A little bit of MKR in your wallet
+* A little bit of MKR in your wallet (for paying fees)
 
 The first two can be obtained in a few minutes by heading to the MakerDAO dashboard: https://dai.makerdao.com/
 
@@ -141,36 +141,36 @@ var PETH = 1;
 
 ```
 
-## Actions
+## API
 
-* ETHToDAI (ETH, options)
-* DAIToETH (DAI, options)
-* ETHToWETH (ETH, options)
-* WETHToPETH (WETH, options)
-* PETHToCDP (PETH, options)
-* CDPToDAI (DAI, options)
-* DAIToCDP (DAI, options)
-* CDPToPETH (PETH, options)
-* PETHToWETH (PETH, options)
-* WETHToETH (WETH, options)
-* CDPToETH (ETH, options)
-* PETHToETH (PETH, options)
-* WETHToDAI (WETH, options)
-* PETHToDAI (PETH, options)
+* nodeDai.ETHToDAI (ETH, options)
+* nodeDai.DAIToETH (DAI, options)
+* nodeDai.ETHToWETH (ETH, options)
+* nodeDai.WETHToPETH (WETH, options)
+* nodeDai.PETHToCDP (PETH, options)
+* nodeDai.CDPToDAI (DAI, options)
+* nodeDai.DAIToCDP (DAI, options)
+* nodeDai.CDPToPETH (PETH, options)
+* nodeDai.PETHToWETH (PETH, options)
+* nodeDai.WETHToETH (WETH, options)
+* nodeDai.CDPToETH (ETH, options)
+* nodeDai.PETHToETH (PETH, options)
+* nodeDai.WETHToDAI (WETH, options)
+* nodeDai.PETHToDAI (PETH, options)
 
 
 ## Options
 
-```node
+```json
     privateKey: Your private key, used for signing transactions. All transactions are signed locally.
     cdpId: The numeric ID of one of your open CDPs (e.g. 401)
     web3: Your web3 instance.
-    networkId: The ID of the desired network. 1 for Main Network, 42 for Kovan Test Network. Defaults to 42
+    networkId: The ID of the desired network. 1 for Main Network, 42 for Kovan Test Network. Default: 42
     DAIToDraw: Amount of DAI to draw from your CDP. Only relevant for method: ETHToDAI
-    verbose: Whether to print to console or not. Defaults to true
-    waitInterval: Amount of ms to wait inbetween transactions. Defaults to 10000
-    gasLimit: Gas Limit for every transaction. Defaults to 300000
-    requireConfirm: Require that every transaction receives 12 block confirmations before proceeding to next. Defaults to false
+    verbose: Whether to print to console or not. Default: true
+    waitInterval: Amount of ms to wait inbetween transactions. Default:  10000
+    gasLimit: Gas Limit for every transaction. Default:  300000
+    requireConfirm: Require that every transaction receives 12 block confirmations before proceeding to next. Default: false
 ```
 
 ## Networks
@@ -186,12 +186,14 @@ More test networks will be added soon.
 
 If you prefer not to use your own account, you may instead use the Ganache mock account with
 
-* privateKey: c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3
-* seed: candy maple cake sugar pudding cream honey rich smooth crumble sweet treat
+```json
+  privateKey: c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3
+  seed: candy maple cake sugar pudding cream honey rich smooth crumble sweet treat
+```
 
 This account is public, has an open CDP, some MKR and Kovan-ETH in its wallet and has set all permissions. It can be used for fast testing.
 
-DO NOT SEND REAL FUNDS TO THIS ACCOUNT. USE FOR TESTING ONLY.
+**DO NOT SEND REAL FUNDS TO THIS ACCOUNT. USE FOR TESTING ONLY.
 
 ## Troubleshooting
 
@@ -226,4 +228,9 @@ Access OasisDEX at: https://oasisdex.com/trade/MKR/DAI
 
 ## Contributing
 
-This module is still in its infancy. Any pull requests are very welcome!
+```bash
+  git clone https://github.com/Kaisle/node-dai.git && cd node-dai
+  npm install
+```
+
+This module is still in its infancy. Any pull requests are welcome!
