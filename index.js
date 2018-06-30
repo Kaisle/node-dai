@@ -1,4 +1,4 @@
-const config = require('config.json')('config.json');
+const config = require('config.json')(__dirname + '/config.json');
 const BN = require('bn.js');
 const Tx = require('ethereumjs-tx');
 const fetch = require('node-fetch');
