@@ -139,20 +139,20 @@ var PETH = 1;
 
 ## API
 
-* nodeDai.ETHToDAI (ETH, options)
-* nodeDai.DAIToETH (DAI, options)
-* nodeDai.ETHToWETH (ETH, options)
-* nodeDai.WETHToPETH (WETH, options)
-* nodeDai.PETHToCDP (PETH, options)
-* nodeDai.CDPToDAI (DAI, options)
-* nodeDai.DAIToCDP (DAI, options)
-* nodeDai.CDPToPETH (PETH, options)
-* nodeDai.PETHToWETH (PETH, options)
-* nodeDai.WETHToETH (WETH, options)
-* nodeDai.CDPToETH (ETH, options)
-* nodeDai.PETHToETH (PETH, options)
-* nodeDai.WETHToDAI (WETH, options)
-* nodeDai.PETHToDAI (PETH, options)
+* Deposit ETH and withdraw DAI: nodeDai.ETHToDAI (ETH, options)
+* DAI to ETH: nodeDai.DAIToETH (DAI, options)
+* ETH to WETH: nodeDai.ETHToWETH (ETH, options)
+* WETH to PETH: nodeDai.WETHToPETH (WETH, options)
+* PETH to CDP: nodeDai.PETHToCDP (PETH, options)
+* Draw DAI: nodeDai.CDPToDAI (DAI, options)
+* Repay DAI: nodeDai.DAIToCDP (DAI, options)
+* Withdraw PETH from CDP: nodeDai.CDPToPETH (PETH, options)
+* PETH to WETH: nodeDai.PETHToWETH (PETH, options)
+* WETH to ETH: nodeDai.WETHToETH (WETH, options)
+* CDP to ETH: nodeDai.CDPToETH (ETH, options)
+* PETH to ETH: nodeDai.PETHToETH (PETH, options)
+* WETH to DAI: nodeDai.WETHToDAI (WETH, options)
+* PETH to DAI: nodeDai.PETHToDAI (PETH, options)
 
 
 ## Options
@@ -161,7 +161,7 @@ var PETH = 1;
     privateKey: Your private key, used for signing transactions. All transactions are signed locally.
     cdpId: The numeric ID of one of your open CDPs (e.g. 614)
     networkId: The ID of the desired network. 1 for Main Network, 42 for Kovan Test Network. Default: 42
-    DAIToDraw: Amount of DAI to draw from your CDP. Only relevant for method: ETHToDAI
+    DAIToDraw: Amount of DAI to draw from your CDP. Only relevant for methods: ETHToDAI, WETHToDAI, PETHToDAI
     web3: An optional web3 instance. Must be version 0.20.6 or lower of web3. Version 1.x.x of web3 is currently not supported.
     verbose: Whether to print to console or not. Default: true
     waitInterval: Amount of ms to wait inbetween transactions. Default:  10000
