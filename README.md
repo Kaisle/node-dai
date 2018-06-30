@@ -25,6 +25,8 @@ The first two can be obtained in a few minutes by heading to the MakerDAO dashbo
 
 MKR can be bought at OasisDEX: https://oasisdex.com/trade/MKR/DAI
 
+Alternatively you can use a [public test account](#public-test-account) that is set up for use already.
+
 ## Examples
 
 #### Deposit 1 ETH to CDP and draw 300 DAI:
@@ -193,7 +195,7 @@ If you prefer not to use your own account, you may instead use the Ganache mock 
 
 This account is public, has an open CDP, some MKR and Kovan-ETH in its wallet and has set all permissions. It can be used for fast testing.
 
-**DO NOT SEND REAL FUNDS TO THIS ACCOUNT. USE FOR TESTING ONLY.
+**DO NOT SEND REAL FUNDS TO THIS ACCOUNT. USE FOR TESTING ONLY.**
 
 ## Troubleshooting
 
