@@ -1,6 +1,6 @@
 # node-dai
 
-* Convert ETH to DAI.
+* Deposit ETH to CDP and draw DAI.
 * Convert DAI to ETH.
 * Fund your CDP with PETH.
 * Draw DAI from your CDP.
