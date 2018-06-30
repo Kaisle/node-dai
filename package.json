@@ -1,0 +1,36 @@
+{
+  "name": "node-dai",
+  "version": "1.0.0",
+  "description": "Convert DAI to ETH and back in one command. Fund and draw from your CDP. 14 different actions related to MakerDAO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "DAI",
+    "ETH",
+    "CDP",
+    "WETH",
+    "PETH",
+    "MakerDAO",
+    "Maker DAO",
+    "Maker",
+    "dai",
+    "eth",
+    "cdp",
+    "weth",
+    "peth"
+  ],
+  "author": "Kaisle",
+  "license": "MIT",
+  "homepage": "https://github.com/Kaisle/node-dai#readme"
+  "dependencies": {
+    "await-transaction-mined": "^1.0.9",
+    "bn.js": "^4.11.8",
+    "config.json": "0.0.4",
+    "ethereumjs-tx": "^1.3.5",
+    "ethereumjs-wallet": "^0.6.0",
+    "node-fetch": "^2.1.2",
+    "web3": "^0.20.6"
+  }
+}
