@@ -163,7 +163,7 @@ var PETH = 1;
 
 ```node
     privateKey: Your private key, used for signing transactions. All transactions are signed locally.
-    cdpId: The numeric ID of one of your open CDP's (e.g. 401)
+    cdpId: The numeric ID of one of your open CDPs (e.g. 401)
     web3: Your web3 instance.
     networkId: The ID of the desired network. 1 for Main Network, 42 for Kovan Test Network. Defaults to 42
     DAIToDraw: Amount of DAI to draw from your CDP. Only relevant for method: ETHToDAI
